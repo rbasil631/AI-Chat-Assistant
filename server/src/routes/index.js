@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { createMetaController } from '../controllers/meta.controller.js';
 import { chatRoutes } from './chat.routes.js';
 import { conversationRoutes } from './conversation.routes.js';
+import { searchRoutes } from './search.routes.js';
 
 export function apiRouter(deps) {
   const router = Router();
@@ -10,5 +11,6 @@ export function apiRouter(deps) {
   router.get('/tones', meta.tones);
   router.use(conversationRoutes());
   router.use(chatRoutes(deps));
+  router.use(searchRoutes());
   return router;
 }
